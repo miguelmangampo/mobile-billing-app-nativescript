@@ -5,3 +5,5 @@ Then follow the steps below in CLI
  2. run an emulator for android
  3. "tns run anroid" to run the application on emulator or existing android device
  4. "tns build android" build an apk for android 
+
+Note: all of the .js functionalities of this app are located in "app" folder.
