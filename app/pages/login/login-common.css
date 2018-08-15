@@ -1,0 +1,26 @@
+Image {
+  margin-top: 5;
+  margin-bottom: 20;
+}
+Button, TextField {
+  margin-left: 16;
+  margin-right: 16;
+  margin-bottom: 10;
+}
+
+.login-container {
+  margin-left: 30;
+  margin-right: 30;
+  padding-bottom: 15;
+  margin-top: 21%;
+  background-color: white;
+}
+
+.label-title {
+  font-size: 20px;
+}
+
+.label-sub-title {
+  font-size: 12px;
+  margin-bottom: 55px;
+}

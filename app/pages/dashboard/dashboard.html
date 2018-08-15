@@ -1,0 +1,47 @@
+<ActionBar  [title]="'Clients (' + vehicleList.length + ')'" class="default-action-bar">
+	<ActionItem text="Map" 
+				(tap)="showMap()" 
+				icon="~/images/action-menu/map-radius-250.png"
+				android.position="popup"
+				ios.position="right">
+	</ActionItem>
+	<ActionItem text="Settings" 
+				(tap)="showSettings()" 
+				icon="~/images/action-menu/settings-250.png"
+				android.position="popup"
+				ios.position="right">
+	</ActionItem>
+	<ActionItem text="Filters" 
+				(tap)="showFilters()" 
+				icon="~/images/action-menu/settings-250.png"
+				android.position="popup"
+				ios.position="right">
+	</ActionItem>
+	<ActionItem text="Sign off" 
+				(tap)="signOff()" 
+				icon="~/images/action-menu/account-off-250.png"
+				android.position="popup"
+				ios.position="right">
+	</ActionItem>
+	<ActionItem text="Refresh" 
+				(tap)="refreshList()" 
+				icon="~/images/action-menu/refresh-250.png"
+				ios.position="right">
+	</ActionItem>
+</ActionBar>
+
+<StackLayout #container>
+	<SearchBar #searchBar
+			hint="Search"
+			[visibility]="!isLoading ? 'visible' : 'collapse'"
+			(textChange)="onSearchChanged($event)">
+	</SearchBar>
+
+	<StackLayout #container [visibility]="!isLoading ? 'visible' : 'collapse'">
+		<VehicleListComponent 
+			[vehicleList]="vehicleList">		
+		</VehicleListComponent>
+	</StackLayout>
+
+	<DefaultLoaderComponent [isVisible]="isLoading"></DefaultLoaderComponent>
+</StackLayout>

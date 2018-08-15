@@ -1,0 +1,93 @@
+
+<ActionBar title="Device" class="default-action-bar">
+	<NavigationButton 
+		icon="~/images/action-menu/back-250.png" text="Back"
+		(tap)="goBack()">
+	</NavigationButton>
+
+	<ActionItem text="Refresh" 
+				(tap)="refreshData()" 
+				icon="~/images/action-menu/refresh-250.png"
+				ios.position="right">
+	</ActionItem>
+</ActionBar>
+
+<CardView [visibility]="!isLoading ? 'visible' : 'collapse'"  
+		margin="10" 
+		elevation="40" 
+		radius="1" >
+	<GridLayout rows="auto, auto, auto, auto, auto" 
+				class="device-status-container">
+		<ClientVehicleHeaderComponent [clientName]="clientName" 
+									[vehicleName]="vehicleName"
+									row="0">
+		</ClientVehicleHeaderComponent>
+
+		<!-- Running -->
+		<GridLayout class="default-list-container" row="1" columns="auto, auto" rows="auto, auto">
+			<Label class="title-half" 
+				text="Running status: " 
+				row="0" col="0">		
+			</Label>
+			<Label class="title-half" 
+				text="" 
+				row="0" col="1">		
+			</Label>
+			<Label class="value-half color-primary" 
+				[text]="runningStatus" 
+				row="1" col="0">		
+			</Label>
+			<Label class="value-half color-primary" 
+				[text]="((deviceDetails && deviceDetails.runningStatus) ? formatDatetimeString(deviceDetails.runningStatus.updatedAt) : '')" 
+				row="1" col="1">		
+			</Label>
+		</GridLayout>
+
+		<!-- Comm -->
+		<GridLayout class="default-list-container" row="2" columns="auto, auto" rows="auto, auto">
+			<Label class="title-half" 
+				text="Comm status: " 
+				row="0" col="0">		
+			</Label>
+			<Label class="title-half" 
+				text="" 
+				row="0" col="1">		
+			</Label>
+			<Label class="value-half color-primary" 
+				[text]="commStatus" 
+				row="1" col="0">		
+			</Label>
+			<Label class="value-half color-primary" 
+				[text]="((deviceDetails && deviceDetails.commStatus) ? formatDatetimeString(deviceDetails.commStatus.updatedAt) : '')" 
+				row="1" col="1">		
+			</Label>
+		</GridLayout>
+
+		<!-- Activation -->
+		<GridLayout class="default-list-container" row="3" columns="auto, auto" rows="auto, auto">
+			<Label class="title-half" 
+				text="Activation status: " 
+				row="0" col="0">		
+			</Label>
+			<Label class="title-half" 
+				text="" 
+				row="0" col="1">		
+			</Label>
+			<Label [class]="'value-half default-status-label ' + ((deviceDetails && deviceDetails.activationStatus) ? deviceDetails.activationStatus.status : '')"
+				[text]="activationStatus" 
+				row="1" col="0">		
+			</Label>
+			<Label class="value-half color-primary" 
+				[text]="((deviceDetails && deviceDetails.activationStatus) ? formatDatetimeString(deviceDetails.activationStatus.updatedAt) : '')" 
+				row="1" col="1">		
+			</Label>
+		</GridLayout>
+
+		<Button [class]="'activation-button ' + ((deviceDetails && deviceDetails.activationStatus) ? deviceDetails.activationStatus.status : '')" 
+				[text]="activationText"
+				(tap)="activation()"
+				row="4">
+		</Button>
+	</GridLayout>
+</CardView>
+<DefaultLoaderComponent [isVisible]="isLoading"></DefaultLoaderComponent>

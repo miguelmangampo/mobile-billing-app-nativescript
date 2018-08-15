@@ -1,0 +1,18 @@
+.main-container {
+  margin-top: 80px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.main-container .title-margin {
+  margin-bottom: 15px;
+}
+
+.submit-button-container {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+DropDown {
+  margin-top: 50px;
+}

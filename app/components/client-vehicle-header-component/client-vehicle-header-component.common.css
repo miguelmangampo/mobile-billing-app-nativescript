@@ -1,0 +1,8 @@
+.title-container {
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.title-container .client-name {
+	font-size: 16px;
+}

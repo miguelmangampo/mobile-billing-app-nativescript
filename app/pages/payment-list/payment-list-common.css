@@ -1,0 +1,41 @@
+
+ListView {
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
+.main-container {
+	margin: 20px;
+}
+
+.main-container .half-percent-width {
+	width: 50%;
+}
+
+.main-container .list-container.cancelled {
+	background-color: #f2d7d5;
+}
+
+.main-container .total-price-container {
+	margin-bottom: 40px;
+	margin-left: 30px;
+	margin-right: 30px;
+	text-align: right;
+}
+
+.main-container .total-price-container .price-title {
+	margin-right: 20px;
+	font-size: 14px;
+}
+
+.main-container .total-price-container .price-value {
+	font-size: 14px;
+	color: #1e8449;
+}
+
+.main-container .no-record {
+	margin: 40px;
+	font-style: italic;
+}
+
+

@@ -1,0 +1,107 @@
+
+<ActionBar [title]="'Payments (' + (totalRecords | number) + ')'" class="default-action-bar">
+	<NavigationButton 
+		icon="~/images/action-menu/back-250.png" text="Back"
+		(tap)="goBack()">
+	</NavigationButton>
+	
+	<ActionItem text="Refresh" 
+				(tap)="refreshList()" 
+				icon="~/images/action-menu/refresh-250.png"
+				ios.position="right">
+	</ActionItem>
+</ActionBar>
+
+<CardView margin="10" 
+		elevation="40" 
+		radius="1" 
+		[visibility]="!isLoading ? 'visible' : 'collapse'">
+	<StackLayout #container 
+				class="main-container" 
+				orientation="vertical">
+
+		<ClientVehicleHeaderComponent [clientName]="clientName" 
+									[vehicleName]="vehicleName">
+		</ClientVehicleHeaderComponent>
+
+		<Label [visibility]="!(paymentList.length > 0) ? 'visible' : 'collapse'"
+			class="no-record"
+			horizontalAlignment="center"
+			text="No payments found">
+		</Label>
+
+		<StackLayout [visibility]="(paymentList.length > 0) ? 'visible' : 'collapse'"
+				class="total-price-container" 
+				orientation="horizontal">
+			<Label class="price-title" 
+				text="Total Paid Amount: ">
+			</Label>
+			<Label class="price-value"
+				[text]="totalPaidAmt | number">
+			</Label>
+		</StackLayout>
+
+		<ListView [visibility]="(paymentList.length > 0) ? 'visible' : 'collapse'"
+			[items]="paymentList" 
+			class="small-spacing">
+			<ng-template let-item="item">
+				<StackLayout [class]="'list-container ' + isPaymentCancelled(item).status" 
+						orientation="vertical">
+					<GridLayout class="default-list-container" columns="auto, auto" rows="auto, auto">
+						<Label class="title-half" 
+							text="Receipt: " 
+							row="0" col="0">		
+						</Label>
+						<Label class="title-half default-align-right" 
+							text="Payment Date: " 
+							row="0" col="1">		
+						</Label>
+						<Label class="value-half color-primary" 
+							[text]="(item.receiptNo.trim() == '' ? 'NO RECEIPT' : item.receiptNo)" 
+							row="1" col="0">		
+						</Label>
+						<Label class="value-half color-primary default-align-right" 
+							[text]="formatDateString(item.paymentDate)" 
+							row="1" col="1">		
+						</Label>
+					</GridLayout>
+
+					<GridLayout class="default-list-container" columns="auto, auto" rows="auto, auto">
+						<Label class="title-half" 
+							text="Mode: " 
+							row="0" col="0">		
+						</Label>
+						<Label class="title-half default-align-right" 
+							text="Amount: " 
+							row="0" col="1">		
+						</Label>
+						<Label class="value-half color-primary" 
+							[text]="item.Mode" 
+							row="1" col="0">		
+						</Label>
+						<Label class="value-half color-primary default-align-right" 
+							[text]="item.Amount | number" 
+							row="1" col="1">		
+						</Label>
+					</GridLayout>
+
+					<GridLayout class="default-list-container" 
+						columns="auto, auto" 
+						rows="auto, auto"
+						[visibility]="isPaymentCancelled(item).isCancelled ? 'visible' : 'collapse'">
+						<Label class="title" 
+							text="Cancelled By: " 
+							row="0" col="0">		
+						</Label>
+						<Label class="value color-primary" 
+							[text]="((item.cancelledBy) ? item.cancelledBy : '')" 
+							row="1" col="0">		
+						</Label>
+					</GridLayout>
+				</StackLayout>
+			</ng-template>
+		</ListView>	
+	</StackLayout>
+</CardView>
+
+<DefaultLoaderComponent [isVisible]="isLoading"></DefaultLoaderComponent>

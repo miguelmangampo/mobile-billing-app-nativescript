@@ -1,0 +1,93 @@
+/*
+.mdi {
+  font-family: "Material Icons", "MaterialIcons-Regular";
+}
+*/
+
+TextField {
+  padding: 10;
+  font-size: 13;
+  border-width: 2;
+  border-color: #206ed4;
+  border-radius: 5;
+}
+
+DropDown {
+	border-width: 2;
+	border-color: #206ed4;
+	border-radius: 5;
+	padding: 10;
+	font-size: 13;
+}
+
+.color-primary { color: #3B5997; }
+.background-color-primary { background-color: #3B5997; }
+.border-color-primary { border-color: #2b3c6a; }
+
+.default-submit-button {
+  background-color: #3B5997;
+  color: white;
+  margin-top: 20px;
+}
+
+.default-action-bar {
+	/* padding-top: 50px; */
+	background-color: #3B5997; 
+	color: white;
+}
+
+.default-align-right {
+	text-align: right;
+}
+
+.default-list-container {
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-bottom: 15px;
+}
+
+.default-list-container .title-half {
+	width: 50%;
+	font-size: 11px;
+}
+
+.default-list-container .value-half {
+	width: 50%;
+	font-size: 14px;
+}
+
+.default-list-container .title {
+	width: 100%;
+	font-size: 11px;
+}
+
+.default-list-container .value {
+	width: 100%;
+	font-size: 14px;
+}
+
+.default-status-label.ACTIVE {
+    color: #1e8449;
+}
+
+.default-status-label.INACTIVE {
+    color: #922b21;
+}
+
+.default-status-label.DEACTIVATING, 
+.default-status-label.WAITING_TO_DEACT {
+    color: #dc7633;
+}
+
+.default-status-label.ACTIVATING, 
+.default-status-label.WAITING_TO_ACT {
+    color: #16a085;
+}
+
+.default-status-label.RESERVING_TO_ACTIVATE {
+    color: #E9967A;
+}
+
+.default-status-label.RESERVING_TO_DEACTIVATE {
+    color: #F08080;
+}

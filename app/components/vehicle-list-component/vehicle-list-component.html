@@ -1,0 +1,62 @@
+<StackLayout #container>
+	<ListView [items]="vehicleList" row="1" class="small-spacing" separatorColor="transparent">
+		<ng-template let-item="item">
+			<CardView margin="10" elevation="40" radius="1" >
+				<StackLayout orientation="vertical" [class]="'list-container status-color ' + getDueStatusClass(item.deadlineDate)">
+					<Label class="client-name color-primary"
+						[text]="item.clientName">
+					</Label>
+
+					<GridLayout class="mid-title-container" columns="*, auto">
+						<StackLayout orientation="vertical" col="0">
+							<Label [text]="item.vehicleName"></Label>
+						</StackLayout>
+					</GridLayout>
+
+					<!-- Start of mobility and activation status-->
+					<GridLayout class="default-list-container" columns="auto, auto" rows="auto, auto">
+						<Label class="title-half" text="Start of Mobility: " row="0" col="0"></Label>
+						<Label class="title-half align-right" text="Activation Status: " row="0" col="1"></Label>
+						<Label class="value-half color-primary" [text]="formatDateString(item.startOfMobility)" row="1" col="0"></Label>
+						<Label
+							row="1" 
+							col="1"
+							[class]="'value-half align-right default-status-label ' + ((item.apiData && item.apiData.activationStatus) 
+								? item.apiData.activationStatus.status 
+								: 'color-primary')" 
+							[text]="(item.apiData) ? item.apiData.activationStatus.status : 'NO_DATA'">		
+						</Label>
+					</GridLayout>
+
+					<!-- Deadline & Balance -->
+					<GridLayout class="default-list-container" columns="auto, auto" rows="auto, auto">
+						<Label class="title-half" text="Deadline: " row="0" col="0"></Label>
+						<Label class="title-half align-right" text="Balance: " row="0" col="1"></Label>
+						<Label class="value-half color-primary" [text]="formatDateString(item.deadlineDate)" row="1" col="0"></Label>
+						<Label class="value-half color-primary align-right" [text]="item.balance | number" row="1" col="1"></Label>
+					</GridLayout>
+
+					<!-- Last Service and Unpaid -->
+					<GridLayout class="default-list-container" columns="auto, auto" rows="auto, auto">
+						<Label class="title-half" text="Last Service: " row="0" col="0"></Label>
+						<Label class="title-half align-right" text="Unpaid Service: " row="0" col="1"></Label>
+						<Label class="value-half color-primary" [text]="item.lastServiceDate" row="1" col="0"></Label>
+						<Label class="value-half color-primary align-right" [text]="item.unpaidService | number" row="1" col="1"></Label>
+					</GridLayout>
+
+					<!-- Action buttons -->
+					<StackLayout class="action-button-container" orientation="horizontal">
+						<Button class="action-button device" 
+								text="Device"
+								(tap)="device_Clicked(item)">
+						</Button>
+						<Button class="action-button payments" 
+								text="Payments"
+								(tap)="payments_Clicked(item)">			
+						</Button>
+					</StackLayout>
+				</StackLayout>
+			</CardView>
+		</ng-template>
+	</ListView>
+</StackLayout>

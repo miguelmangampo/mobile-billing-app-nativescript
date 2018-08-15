@@ -1,0 +1,38 @@
+
+.list-container {
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.list-container .client-name {
+	font-size: 16px;
+	padding-bottom: 10px;
+}
+
+.list-container .align-right {
+	text-align: right;
+}
+
+.list-container .mid-title-container {
+	margin-bottom: 25px;
+}
+
+.list-container .action-button-container .action-button {
+	width: 50%;
+	color: white;
+}
+
+.list-container .action-button-container .action-button.device{
+	background-color: #206ed4;
+}
+
+.list-container .action-button-container .action-button.payments{
+	background-color: #00b17a;
+}
+
+.list-container.status-color.DONE { background-color: #d6eaf8; }
+.list-container.status-color.BELOW { background-color: #f2d7d5; }
+.list-container.status-color.TODAY { background-color: #fcf3cf; }
+

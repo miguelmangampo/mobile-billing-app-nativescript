@@ -1,0 +1,77 @@
+<ActionBar title="Settings" class="default-action-bar">
+	<NavigationButton 
+		icon="~/images/action-menu/back-250.png" text="Back"
+		(tap)="goBack()">
+	</NavigationButton>
+</ActionBar>
+
+<CardView margin="10" 
+		elevation="40" 
+		radius="1" >
+	<ScrollView sdkExampleTitle sdkToggleNavButton>
+		<GridLayout class="main-container"
+					rows="auto, auto, auto, auto, auto">
+			<!-- Datetime -->
+			<GridLayout class="default-list-container" 
+				columns="auto, auto" 
+				rows="auto, auto"
+				row="0">
+				<Label class="title title-margin" 
+					text="Application Datetime: " 
+					row="0" col="0">		
+				</Label>
+				<TextField class="value" 
+					hint="Application Datetime" 
+					[(ngModel)]="settings.appDateTime"
+					keyboardType="url"
+					row="1" col="0"
+					editable="false">		
+				</TextField>
+			</GridLayout>
+
+			<!-- Url -->
+			<GridLayout class="default-list-container" 
+				columns="auto, auto" 
+				rows="auto, auto"
+				row="1">
+				<Label class="title title-margin" 
+					text="URL Endpoint: " 
+					row="0" col="0">		
+				</Label>
+				<TextField class="value" 
+					hint="URL Endpoint" 
+					[(ngModel)]="settings.urlEndpoint"
+					keyboardType="url"
+					row="1" col="0">		
+				</TextField>
+			</GridLayout>
+
+			<!-- Max records -->
+			<GridLayout class="default-list-container" 
+				columns="auto, auto" 
+				rows="auto, auto"
+				row="2">
+				<Label class="title title-margin" 
+					text="Maximum records to load: " 
+					row="0" col="0">		
+				</Label>
+				<TextField class="value" 
+					hint="Max records" 
+					[(ngModel)]="settings.maxRecords"
+					keyboardType="number"
+					row="1" col="0">		
+				</TextField>
+			</GridLayout>
+
+			<StackLayout class="submit-button-container" row="4">
+				<Button 
+					text="Save"
+					class="default-submit-button" 
+					(tap)="save()">		
+				</Button>
+			</StackLayout>
+		</GridLayout>
+	</ScrollView>
+</CardView>
+
+

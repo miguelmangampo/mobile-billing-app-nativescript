@@ -1,0 +1,53 @@
+<ScrollView sdkExampleTitle sdkToggleNavButton>
+	<GridLayout class="login-container" rows="auto auto auto auto auto">
+		<Image src="~/images/gms-logo.png" 
+			stretch="none" 
+			horizontalAlignment="center"
+			row="0">		
+		</Image>
+
+		<Label class="label-title color-primary"
+			horizontalAlignment="center" 
+			text="Mobile Platform (Beta)"
+			row="1">
+		</Label>
+
+		<Label class="label-sub-title"
+			horizontalAlignment="center" 
+			text="Analyze, locate everywhere"
+			row="2">
+		</Label>
+
+		<StackLayout [visibility]="!isLoading ? 'visible' : 'collapse'" 
+					orientation="vertical" 
+					row="3">
+			<TextField #email 
+				hint="Username" 
+				keyboardType="email" 
+				[(ngModel)]="user.username"
+				autocorrect="false" 
+				autocapitalizationType="none">		
+			</TextField>
+			
+			<TextField #password 
+				hint="Password" 
+				secure="true" 
+				[(ngModel)]="user.password">		
+			</TextField>
+
+			<Button 
+				text="Login"
+				class="default-submit-button" 
+				(tap)="login()">		
+			</Button>
+		</StackLayout>
+
+		<ActivityIndicator 
+			[busy]="isLoading" 
+			[visibility]="isLoading ? 'visible' : 'collapse'" 
+			horizontalAlignment="center" 
+			verticalAlignment="center"
+			row="4">		
+		</ActivityIndicator>
+	</GridLayout>
+</ScrollView>

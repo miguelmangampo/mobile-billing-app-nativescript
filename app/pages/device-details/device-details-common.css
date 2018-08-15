@@ -1,0 +1,25 @@
+.activation-button {
+	margin: 50px;
+	color: white;
+}
+
+.device-status-container {
+	margin: 20px;
+}
+
+.activation-button.INACTIVE {
+	background-color: #1e8449;
+}
+
+.activation-button.ACTIVE {
+	background-color: #922b21;
+}
+
+.activation-button.DEACTIVATING, 
+.activation-button.WAITING_TO_DEACT,
+.activation-button.ACTIVATING,
+.activation-button.WAITING_TO_ACT,
+.activation-button.RESERVING_TO_ACTIVATE,
+.activation-button.RESERVING_TO_DEACTIVATE {
+    background-color: #b8860b;
+}

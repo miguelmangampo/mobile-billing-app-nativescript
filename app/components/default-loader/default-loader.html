@@ -1,0 +1,14 @@
+<StackLayout #container orientation="vertical" [visibility]="isVisible ? 'visible' : 'collapse'">
+	<ActivityIndicator
+		class="activity-margin-top" 
+		[busy]="isVisible" 
+		row="1" 
+		horizontalAlignment="center" 
+		verticalAlignment="center">		
+	</ActivityIndicator>
+
+	<Label [text]="'Please wait...'"
+		horizontalAlignment="center" 
+		verticalAlignment="center">
+	</Label>
+</StackLayout>

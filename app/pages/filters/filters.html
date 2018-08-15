@@ -1,0 +1,121 @@
+<ActionBar title="Filters" class="default-action-bar">
+	<NavigationButton 
+		icon="~/images/action-menu/back-250.png" text="Back"
+		(tap)="goBack()">
+	</NavigationButton>
+</ActionBar>
+
+<CardView margin="10" 
+		elevation="40" 
+		radius="1" >
+	<ScrollView sdkExampleTitle sdkToggleNavButton>
+		<GridLayout class="main-container"
+					rows="auto, auto, auto, auto, auto, auto">
+
+			<!-- Company selection -->
+			<GridLayout class="default-list-container"
+				[visibility]="isCompanyOrigin ? 'visible' : 'collapse'"
+				columns="auto, auto" 
+				rows="auto, auto"
+				row="0">
+				<Label class="title title-margin" 
+					text="Selected Company (Code / SocietyID): " 
+					row="0" col="0">		
+				</Label>
+
+				<DropDown #companyDropDown
+					class="value"
+					backroundColor="red"
+					[items]="companyDropDownItems"
+					[(ngModel)]="companyDropDownIndex"
+					row="0"
+					colSpan="2">		
+				</DropDown>
+			</GridLayout>
+
+			<!-- running -->
+			<GridLayout class="default-list-container"
+				rows="auto, auto"
+				row="1">
+				<Label class="title title-margin" 
+					text="Running status: " 
+					row="0">		
+				</Label>
+
+				<DropDown #runningStatusDropDown
+					class="value"
+					backroundColor="red"
+					[items]="runningStatus_DropDownItems"
+					[(ngModel)]="runningStatus_DropDownIndex"
+					row="0"
+					colSpan="2">		
+				</DropDown>
+			</GridLayout>
+
+			<!-- comm -->
+			<GridLayout class="default-list-container"
+				rows="auto, auto"
+				row="2">
+				<Label class="title title-margin" 
+					text="Comm status: " 
+					row="0">		
+				</Label>
+
+				<DropDown #commStatusDropDown
+					class="value"
+					backroundColor="red"
+					[items]="commStatus_DropDownItems"
+					[(ngModel)]="commStatus_DropDownIndex"
+					row="0"
+					colSpan="2">		
+				</DropDown>
+			</GridLayout>
+
+			<!-- activation -->
+			<GridLayout class="default-list-container"
+				rows="auto, auto"
+				row="3">
+				<Label class="title title-margin" 
+					text="Activation status: " 
+					row="0">		
+				</Label>
+
+				<DropDown #activationStatusDropDown
+					class="value"
+					backroundColor="red"
+					[items]="activationStatus_DropDownItems"
+					[(ngModel)]="activationStatus_DropDownIndex"
+					row="0"
+					colSpan="2">		
+				</DropDown>
+			</GridLayout>
+
+			<!-- due date -->
+			<GridLayout class="default-list-container"
+				rows="auto, auto"
+				row="4">
+				<Label class="title title-margin" 
+					text="Due Date: " 
+					row="0">		
+				</Label>
+
+				<DropDown #dueDateDropDown
+					class="value"
+					backroundColor="red"
+					[items]="dueDate_DropDownItems"
+					[(ngModel)]="dueDate_DropDownIndex"
+					row="0"
+					colSpan="2">		
+				</DropDown>
+			</GridLayout>
+
+			<StackLayout class="submit-button-container" row="5">
+				<Button 
+					text="Save"
+					class="default-submit-button" 
+					(tap)="save()">		
+				</Button>
+			</StackLayout>
+		</GridLayout>
+	</ScrollView>
+</CardView>

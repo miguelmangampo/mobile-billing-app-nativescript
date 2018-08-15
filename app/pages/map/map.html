@@ -1,0 +1,29 @@
+<ActionBar [title]="'Map (' + vehicleList.length + ')'" class="default-action-bar">
+	<NavigationButton 
+		icon="~/images/action-menu/back-250.png" text="Back"
+		(tap)="goBack()">
+	</NavigationButton>
+
+	<ActionItem text="Refresh" 
+				(tap)="refreshList()" 
+				icon="~/images/action-menu/refresh-250.png"
+				ios.position="right">
+	</ActionItem>
+</ActionBar>
+
+<StackLayout #container [visibility]="!isLoading ? 'visible' : 'collapse'">
+	<SearchBar #searchBar
+			hint="Search"
+			[visibility]="!isLoading ? 'visible' : 'collapse'"
+			(textChange)="onSearchChanged($event)">
+	</SearchBar>
+
+	<StackLayout #container>
+		<MapView [zoom]="defaultZoom" 
+			[latitude]="location.lat"
+			[longitude]="location.lon"
+			(mapReady)="onMapReady($event)"></MapView> 
+	</StackLayout>
+</StackLayout>
+
+<DefaultLoaderComponent [isVisible]="isLoading"></DefaultLoaderComponent>
